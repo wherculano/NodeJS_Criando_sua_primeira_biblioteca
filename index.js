@@ -1,11 +1,17 @@
 const chalk = require('chalk');
 
-console.log(chalk.blue('Hello World!'));
+//encadear métodos para colorir texto, cor de fundo e texto em negrito
+console.log(chalk.blue.bgWhite.bold('Alura'));
 
-const paragrafo = 'Texto retornado por uma função';
+//receber múltiplos argumentos
+console.log(chalk.blue('curso', 'de', 'NodeJS'));
 
-function texto(string){
-    return string;
-}
+//métodos aninhados
+console.log(chalk.red('vermelho', chalk.underline.bgBlue('azul')));
 
-console.log(texto(paragrafo));
+// uso de template strings e placeholders
+console.log(`
+CPU: ${chalk.red('90%')}
+RAM: ${chalk.green('40%')}
+DISK: ${chalk.yellow('70%')}
+`);
