@@ -1,17 +1,18 @@
 const chalk = require('chalk');
+const fs = require('fs')  // File System
 
-//encadear métodos para colorir texto, cor de fundo e texto em negrito
-console.log(chalk.blue.bgWhite.bold('Alura'));
+function tratarErro(erro){
+    throw new Error(chalk.red(erro.code, 'Nenhum arquivo ou diretório encontrado.'))
+}
 
-//receber múltiplos argumentos
-console.log(chalk.blue('curso', 'de', 'NodeJS'));
+function pegarArquivo(caminhoDoArquivo){
+    const encoding = 'utf-8'
+    fs.readFile(caminhoDoArquivo, encoding, (erro, texto) => {
+        if (erro){
+            tratarErro(erro)
+        }
+        console.log(chalk.green(texto))
+    })
+}
 
-//métodos aninhados
-console.log(chalk.red('vermelho', chalk.underline.bgBlue('azul')));
-
-// uso de template strings e placeholders
-console.log(`
-CPU: ${chalk.red('90%')}
-RAM: ${chalk.green('40%')}
-DISK: ${chalk.yellow('70%')}
-`);
+pegarArquivo('./arquivos/texto1.md')
