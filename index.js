@@ -6,13 +6,21 @@ function tratarErro(erro){
 }
 
 function pegarArquivo(caminhoDoArquivo){
-    const encoding = 'utf-8'
-    fs.readFile(caminhoDoArquivo, encoding, (erro, texto) => {
-        if (erro){
-            tratarErro(erro)
-        }
-        console.log(chalk.green(texto))
-    })
+    encoding = 'utf-8'
+    fs.promises
+    .readFile(caminhoDoArquivo, encoding)
+    .then((texto) => chalk.green(console.log(texto)))
+    .catch((erro) => tratarErro(erro))
 }
+
+// function pegarArquivo(caminhoDoArquivo){
+//     const encoding = 'utf-8'
+//     fs.readFile(caminhoDoArquivo, encoding, (erro, texto) => {
+//         if (erro){
+//             tratarErro(erro)
+//         }
+//         console.log(chalk.green(texto))
+//     })
+// }
 
 pegarArquivo('./arquivos/texto1.md')
