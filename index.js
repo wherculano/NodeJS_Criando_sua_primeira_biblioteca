@@ -13,6 +13,8 @@ async function pegarArquivo(caminhoDoArquivo){
         console.log(chalk.green(texto))
     }catch(erro){
         tratarErro(erro)
+    }finally{
+        console.log(chalk.yellow('\noperação concluída com sucesso!\n'));
     }
     
 }
