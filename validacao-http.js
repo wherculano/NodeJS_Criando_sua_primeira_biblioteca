@@ -22,7 +22,11 @@ function gerarArrayDeLinks(arrayLinks){
 async function validarURLs(arrayLinks){
     const arrayURLs = gerarArrayDeLinks(arrayLinks)
     const arrayStatus = await checarStatus(arrayURLs)
-    return arrayStatus
+    const resultados = arrayLinks.map((objeto, indice) => ({
+        ...objeto,
+        status: arrayStatus[indice]
+    }))
+    return resultados
 }
 
 module.exports = validarURLs
