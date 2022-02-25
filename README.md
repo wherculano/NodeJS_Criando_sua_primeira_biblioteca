@@ -1,6 +1,6 @@
 ### [NodeJS: Criando sua primeira biblioteca](https://www.alura.com.br/curso-online-nodejs-criando-biblioteca)
 
-Curso final da ["Jornada de JavaScript"](https://www.alura.com.br/cursos-online-programacao/javascript) - Total de 60hr
+Curso final da ["Jornada de JavaScript"](https://www.alura.com.br/cursos-online-programacao/javascript) - Total de 60hr feito na [Alura](https://www.alura.com.br)
 
 - Curso Fundamentos do JavaScript: Tipos variáveis e Funções (12h)
 - Curso Fundamentos do JavaScript: Arrays (10h)
