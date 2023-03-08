@@ -4,12 +4,25 @@ import fs from 'fs';
 
 const caminho = process.argv;
 
-function imprimeResultado(resultado){
-    console.log(chalk.blueBright("Lista de Links:\n"), resultado)
+function imprimeResultado(resultado, identificador=''){
+    console.log(
+        chalk.blueBright("Lista de Links:"), 
+        chalk.yellow.bgBlack(identificador),
+        resultado)
 }
 
 async function processaArquivo(argumentos){
     const caminho = argumentos[2]
+
+    try{
+        fs.lstatSync(caminho)
+    }catch(erro){
+        if(erro.code === 'ENOENT'){
+            console.log(`Arquivo ou Diretorio '${erro.path}' não encontrado.`)
+            return
+        }
+    }
+
     if(fs.lstatSync(caminho).isFile()){
         const resultado = await pegaArquivo(caminho);
         imprimeResultado(resultado)
@@ -17,7 +30,7 @@ async function processaArquivo(argumentos){
         const arquivos = await fs.promises.readdir(caminho)
         arquivos.forEach(async (nomeDoArquivo) => {
             const lista = await pegaArquivo(`${caminho}/${nomeDoArquivo}`)
-            imprimeResultado(lista)
+            imprimeResultado(lista, nomeDoArquivo)
         })
     }
 }
